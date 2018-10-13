@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var pickListItemSchema = new Schema({
-  name:  String,
+  name:  'String',
   pickListTypeId = 'ObjectId',
 });
 
