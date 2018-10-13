@@ -1,4 +1,5 @@
 const config = require('./config')
+const bodyParser = require('body-parser')
 console.log(config)
 
 const knowledgeItemRouter = require('./routes/knowledgeItems')
@@ -10,6 +11,9 @@ mongoose.connect(config.connectionString);
 const express = require('express')
 const app = express()
 const port = 3000
+
+app.use(bodyParser.json({ limit: "10mb" }))
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }))
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
