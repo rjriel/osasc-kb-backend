@@ -23,6 +23,6 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.use('/knowledge/', knowledgeItemRouter)
 app.use('/user/', userRouter)
 app.use('/picklist/', picklistRouter)
-app.use('/picklistItem/', picklistItemRouter)
+app.use('/picklistitem/', picklistItemRouter)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
