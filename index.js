@@ -1,3 +1,9 @@
+const config = require('./config')
+console.log(config)
+
+const mongoose = require('mongoose');
+mongoose.connect(config.connectionString);
+
 const express = require('express')
 const app = express()
 const port = 3000
