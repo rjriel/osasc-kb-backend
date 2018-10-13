@@ -1,11 +1,13 @@
-const config = require('./config')
-console.log(config)
+require('dotenv').load();
+
+const bodyParser = require('body-parser')
 
 const knowledgeItemRouter = require('./routes/knowledgeItems')
+const userRouter = require('./routes/users')
 
 const mongoose = require('mongoose');
 mongoose.set("debug", true)
-mongoose.connect(config.connectionString);
+mongoose.connect(process.env.CONNECTION_STRING);
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -26,7 +28,10 @@ passport.serializeUser(function(user, done) {
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
+
+app.use(bodyParser.json({ limit: "10mb" }))
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }))
 
 // Note: sessions can be stored in Mongo
 app.use(require('express-session')({ secret: config.sessionSecret }));
@@ -42,5 +47,6 @@ function(req, res) {
 });
 
 app.use('/knowledge/', knowledgeItemRouter)
+app.use('/user/', userRouter)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
