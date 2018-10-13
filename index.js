@@ -1,16 +1,16 @@
-const config = require('./config')
+require('dotenv').load();
+
 const bodyParser = require('body-parser')
-console.log(config)
 
 const knowledgeItemRouter = require('./routes/knowledgeItems')
 
 const mongoose = require('mongoose');
 mongoose.set("debug", true)
-mongoose.connect(config.connectionString);
+mongoose.connect(process.env.CONNECTION_STRING);
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(bodyParser.json({ limit: "10mb" }))
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }))
