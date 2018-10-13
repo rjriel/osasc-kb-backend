@@ -34,4 +34,10 @@ router.put('/:id', function(req, res){
     })
 })
 
+router.delete('/:id', function(req, res){
+	User.findOneAndDelete({_id: req.params.id}).then(result => {
+    	res.status(202).json({ success: true })
+    })
+})
+
 module.exports = router
