@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var pickListTypeSchema = new Schema({
-  name:  String,
+  name: 'String',
 });
 
 module.exports = mongoose.model('pickListType', pickListTypeSchema);
