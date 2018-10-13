@@ -21,8 +21,8 @@ router.post('/', function(req, res) {
 })
 
 router.get('/:id', function(req, res) {
-    KnowledgeItem.findOne({_id: req.params.id}).then(results => {
-        res.json(results)
+    KnowledgeItem.findOne({_id: req.params.id}).then(result => {
+        res.json(result)
     })
 })
 
