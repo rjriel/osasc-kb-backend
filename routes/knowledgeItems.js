@@ -1,8 +1,8 @@
 const express= require('express')
-
 const KnowledgeItem = require('../models/knowledgeItem')
-
 const router = express.Router()
+
+const isAuthenticated = require("../auth/isAuthenticated")
 
 router.get('/', function(req, res) {
     KnowledgeItem.find().then(items => {
@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
     })
 })
 
-router.post('/', function(req, res) {
+router.post('/', isAuthenticated, function(req, res) {
     let knowledgeItem = new KnowledgeItem({
         title: req.body.title
     })

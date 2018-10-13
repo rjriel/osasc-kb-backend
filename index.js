@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 
 const knowledgeItemRouter = require('./routes/knowledgeItems')
 const userRouter = require('./routes/users')
+const authRouter = require('./routes/auth')
 
 const mongoose = require('mongoose');
 mongoose.set("debug", true)
@@ -20,5 +21,10 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.use('/knowledge/', knowledgeItemRouter)
 app.use('/user/', userRouter)
+app.use('/auth/', authRouter)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+
+
+
