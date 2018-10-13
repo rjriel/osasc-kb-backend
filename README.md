@@ -22,14 +22,14 @@ GET - /user
 
 POST - /user
 
-GET - /picklist/:id
-
-POST - /picklist/:id
-
-DELETE - /picklistitem/:id
-
 GET - /user/:id
 
 PUT - /user/:id
 
 DELETE - /user/:id
+
+GET - /picklist/:id
+
+POST - /picklist/:id
+
+DELETE - /picklistitem/:id

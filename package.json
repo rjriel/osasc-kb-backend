@@ -20,6 +20,7 @@
   "homepage": "https://github.com/rjriel/osasc-kb-backend#readme",
   "dependencies": {
     "dotenv": "^6.1.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.3.3",
     "passport": "^0.4.0"
