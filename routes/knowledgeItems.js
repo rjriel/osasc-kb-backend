@@ -11,7 +11,6 @@ router.get('/', function(req, res) {
 })
 
 router.post('/', function(req, res) {
-	console.log('in root post')
     let knowledgeItem = new KnowledgeItem({
         title: req.body.title
     })
@@ -22,8 +21,20 @@ router.post('/', function(req, res) {
 })
 
 router.get('/:id', function(req, res) {
-    KnowledgeItem.find({_id: req.params.id}).then(results => {
+    KnowledgeItem.findOne({_id: req.params.id}).then(results => {
         res.json(results)
+    })
+})
+
+router.put('/:id', function(req, res){
+	KnowledgeItem.findOneAndUpdate({_id: req.params.id}, req.body).then(result => {
+    	res.status(200).json({ success: true })
+    })
+})
+
+router.delete('/:id', function(req, res){
+	KnowledgeItem.findOneAndDelete({_id: req.params.id}).then(result => {
+    	res.status(202).json({ success: true })
     })
 })
 
