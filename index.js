@@ -1,15 +1,14 @@
-const config = require('./config')
-console.log(config)
+require('dotenv').load();
 
 const knowledgeItemRouter = require('./routes/knowledgeItems')
 
 const mongoose = require('mongoose');
 mongoose.set("debug", true)
-mongoose.connect(config.connectionString);
+mongoose.connect(process.env.CONNECTION_STRING);
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
