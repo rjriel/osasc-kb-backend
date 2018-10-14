@@ -6,8 +6,8 @@ var knowledgeItemSchema = new Schema({
   user: {type: 'ObjectId', ref: 'user'},
   shortDesc: 'String',
   longDesc: 'String',
-  knowledgeItemType: {type: 'ObjectId', ref: 'picklistItem'},
-  knowledgeItemCategory: {type: 'ObjectId', ref: 'pickistItem'},
+  knowledgeItemType: {type: 'ObjectId', ref: 'picklistitem'},
+  knowledgeItemCategory: {type: 'ObjectId', ref: 'pickistitem'},
   created: {type: 'Date', default: Date.now}
 });
 
