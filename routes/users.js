@@ -1,6 +1,7 @@
 const express= require('express')
 const User = require('../models/user')
 const router = express.Router()
+const bcrypt = require('bcrypt')
 
 const authUtil = require("../auth/authUtil")
 
@@ -14,9 +15,12 @@ router.get('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
 router.post('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
     let user = new User(req.body)
 
-    user.save().then(result => {
-        res.status(201).json({ success: true })
-    })
+    bcrypt.hash(req.body.password, 5, function( err, bcryptedPassword) {
+        user.password = bcryptedPassword
+        user.save().then(result => {
+            res.status(201).json({ success: true })
+        })
+     });
 })
 
 router.get('/:id', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {

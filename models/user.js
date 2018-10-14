@@ -6,6 +6,7 @@ var userSchema = new Schema({
   organization: 'String',
   password: 'String',
   role: 'String',
+  name: 'String',
   created: {type: 'Date', default: Date.now}
 });
 
