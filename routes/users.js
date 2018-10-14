@@ -1,6 +1,7 @@
 const express= require('express')
 const User = require('../models/user')
 const router = express.Router()
+const bcrypt = require('bcrypt')
 
 router.get('/', function(req, res) {
 
@@ -12,12 +13,18 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     let user = new User({
-        username: req.body.username
+        username: req.body.username,
+        organization: req.body.organization,
+        name: req.body.name,
+        role: req.body.role
     })
 
-    user.save().then(result => {
-        res.status(201).json({ success: true })
-    })
+    bcrypt.hash(req.body.password, 5, function( err, bcryptedPassword) {
+        user.password = bcryptedPassword
+        user.save().then(result => {
+            res.status(201).json({ success: true })
+        })
+     });
 })
 
 router.get('/:id', function(req, res) {
