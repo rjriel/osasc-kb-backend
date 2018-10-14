@@ -46,6 +46,7 @@ app.use(bodyParser.json({ limit: "10mb" }))
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }))
 
 // Note: sessions can be stored in Mongo
+app.enable("trust proxy")
 app.use(
   expressSession({
     resave: true,
