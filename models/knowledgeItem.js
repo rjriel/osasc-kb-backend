@@ -6,9 +6,9 @@ var knowledgeItemSchema = new Schema({
   user: {type: 'ObjectId', ref: 'user'},
   shortDesc: 'String',
   longDesc: 'String',
-  knowledgeItemType: {type: 'ObjectId', ref: 'pickListItem'},
-  knowledgeItemCategory: {type: 'ObjectId', ref: 'pickListItem'},
+  knowledgeItemType: {type: 'ObjectId', ref: 'picklistitem'},
+  knowledgeItemCategory: {type: 'ObjectId', ref: 'pickistitem'},
   created: {type: 'Date', default: Date.now}
 });
 
-module.exports = mongoose.model('knowledgeItem', knowledgeItemSchema);
+module.exports = mongoose.model('knowledgeitem', knowledgeItemSchema);

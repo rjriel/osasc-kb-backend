@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var pickListItemSchema = new Schema({
+var picklistItemSchema = new Schema({
   name:  'String',
-  pickListTypeId : 'ObjectId',
+  picklistId: {type: 'ObjectId', ref: 'picklist'},
 });
 
-module.exports = mongoose.model('pickListItem', pickListItemSchema);
+module.exports = mongoose.model('picklistitem', picklistItemSchema);
