@@ -2,7 +2,9 @@ const express= require('express')
 const User = require('../models/user')
 const router = express.Router()
 
-router.get('/', function(req, res) {
+const authUtil = require("../auth/authUtil")
+
+router.get('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
 
     User.find().then(items => {
         // res.json(items) - returns all schema attributes 
@@ -10,7 +12,7 @@ router.get('/', function(req, res) {
     })
 })
 
-router.post('/', function(req, res) {
+router.post('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
     let user = new User({
         username: req.body.username
     })
@@ -20,19 +22,19 @@ router.post('/', function(req, res) {
     })
 })
 
-router.get('/:id', function(req, res) {
+router.get('/:id', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
     User.findOne({_id: req.params.id}).then(results => {
         res.json(results)
     })
 })
 
-router.put('/:id', function(req, res){
+router.put('/:id', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res){
     User.findOneAndUpdate({_id: req.params.id}, req.body).then(result => {
         res.status(200).json({ success: true })
     })
 })
 
-router.delete('/:id', function(req, res){
+router.delete('/:id', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res){
 	User.findOneAndDelete({_id: req.params.id}).then(result => {
     	res.status(202).json({ success: true })
     })
