@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var picklistItemSchema = new Schema({
   name:  'String',
-  picklistId : 'ObjectId',
+  picklistId: {type: 'ObjectId', ref: 'picklist'},
 });
 
 module.exports = mongoose.model('picklistitem', picklistItemSchema);
