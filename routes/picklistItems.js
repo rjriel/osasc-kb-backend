@@ -1,7 +1,7 @@
 const express= require('express')
 const router = express.Router()
 
-const PicklistItem = require('../models/pickistItem')
+const PicklistItem = require('../models/picklistItem')
 
 router.delete('/:id', function(req, res) {
 	
