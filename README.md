@@ -11,43 +11,56 @@ Current methods of communication between parents, the board, and the OCASC are d
 
 ### Users
 Creates new login session
+
 POST - /auth/login
 
 Logout of sessions
+
 POST - /auth/logout
 
 Get knowledge item
+
 GET - /knowledge
 
 Returns all (un)approved knowledge items for user
+
 GET - /knowledge/user
 
 Create new knowledge item
+
 POST - /knowledge
 
 Get knowledge item based on id
+
 GET - /knowledge/:id
 
 Put new variable into knowledge item based on id
+
 PUT - /knowledge/:id
 
 Delete knowledge item based on id
+
 DELETE - /knowledge/:id
 
 ### Admin
 Shows aspects of a user
+
 GET - /user
 
 Creates new user
+
 POST - /user
 
 Gets user based on id
+
 GET - /user/:id
 
 Puts new variable into user based on id
+
 PUT - /user/:id
 
 Deletes user based on id
+
 DELETE - /user/:id
 
 Create a new picklist - see routes/picklist.js
