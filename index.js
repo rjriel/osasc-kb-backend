@@ -30,6 +30,7 @@ if (process.env.CORS != null && process.env.CORS !== "") {
         console.log("CORS INDEX", corsDomains.indexOf(origin))
       if (
         corsDomains.indexOf(origin) !== -1 ||
+        origin == undefined ||
         (corsDomains.length === 1 && corsDomains[0] === "*")
       ) {
         callback(null, true)
