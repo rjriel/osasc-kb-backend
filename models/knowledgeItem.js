@@ -11,4 +11,4 @@ var knowledgeItemSchema = new Schema({
   created: {type: 'Date', default: Date.now}
 });
 
-module.exports = mongoose.model('knowledgeItem', knowledgeItemSchema);
+module.exports = mongoose.model('knowledgeitem', knowledgeItemSchema);
