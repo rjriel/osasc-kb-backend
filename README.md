@@ -28,8 +28,10 @@ PUT - /user/:id
 
 DELETE - /user/:id
 
-GET - /picklist/:id
-
 POST - /picklist/:id
 
 DELETE - /picklistitem/:id
+
+### Other
+
+GET - /picklist/:id
