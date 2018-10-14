@@ -28,11 +28,18 @@ router.post('/', authUtil.isAuthenticated, function(req, res) {
     })
 })
 
+router.get('/user', authUtil.isAuthenticated, function(req,res){
+     KnowledgeItem.find({user: req.user._id}).then(items => {
+        res.json(items.map(item => { return { id: item._id, title: item.title, shortDesc: item.shortDesc, approved: item.approved } }))
+    })
+})
+
 router.get('/:id', function(req, res) {
     KnowledgeItem.findOne({_id: req.params.id}).then(result => {
         res.json(result)
     })
 })
+
 
 router.put('/:id', authUtil.isAuthenticated, function(req, res){
     if (req.body.user != req.user || (req.body.approved == "true" && !authUtil.isAdmin(req, res))) {

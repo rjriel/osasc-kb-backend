@@ -19,6 +19,9 @@ POST - /auth/logout
 Get knowledge item
 GET - /knowledge
 
+Returns all (un)approved knowledge items for user
+GET - /knowledge/:user_id
+
 Create new knowledge item
 POST - /knowledge
 
