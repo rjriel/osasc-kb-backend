@@ -8,7 +8,7 @@ var knowledgeItemSchema = new Schema({
   longDesc: 'String',
   knowledgeItemType: {type: 'ObjectId', ref: 'picklistitem'},
   knowledgeItemCategory: {type: 'ObjectId', ref: 'pickistitem'},
-  created: {type: 'Date', default: Date.now}
+  created: {type: 'Date', default: Date.now},
   approved: {type: 'Boolean', default: false}
 });
 
