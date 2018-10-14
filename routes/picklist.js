@@ -1,7 +1,7 @@
 const express= require('express')
 const router = express.Router()
 
-const PicklistItem = require('../models/picklistItem')
+const PicklistItem = require('../models/picklistItems')
 
 router.get('/:id', function(req, res) {
 	PicklistItem.find({picklistId: req.params.id}).then(result => {
