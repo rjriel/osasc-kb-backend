@@ -28,6 +28,15 @@ router.post('/', authUtil.isAuthenticated, function(req, res) {
     })
 })
 
+router.get('/pending', function(req,res){
+	if(authUtil.isAdmin(req, res)){
+		KnowledgeItem.find({approved: false}).then(items =>{
+			res.json(items.map(item => {return {id: item._id, title: item.title, shortDesc: item.shortDesc, approved: item.approved}}))
+		})
+	}
+})
+
+
 router.get('/user', authUtil.isAuthenticated, function(req,res){
      KnowledgeItem.find({user: req.user._id}).then(items => {
         res.json(items.map(item => { return { id: item._id, title: item.title, shortDesc: item.shortDesc, approved: item.approved } }))

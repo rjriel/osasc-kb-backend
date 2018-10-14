@@ -37,6 +37,8 @@ Current methods of communication between parents, the board, and the OCASC are d
 
 - DELETE - /user/:id :Deletes user based on id
 
+- GET - /knowledge/pending : Gets all pending users
+
 - POST - /picklist/:id :Create a new picklist - see routes/picklist.js
 
 - DELETE - /picklistitem/:id :Delete an entire picklist based on its id - see routes/picklistItems.js
