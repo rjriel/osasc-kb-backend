@@ -11,9 +11,7 @@ router.get('/', function(req, res) {
 })
 
 router.post('/', authUtil.isAuthenticated, function(req, res) {
-    let knowledgeItem = new KnowledgeItem({
-        title: req.body.title
-    })
+    let knowledgeItem = new KnowledgeItem(req.body)
 
     knowledgeItem.save().then(result => {
         res.status(201).json({ success: true })

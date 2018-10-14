@@ -12,9 +12,7 @@ router.get('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
 })
 
 router.post('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
-    let user = new User({
-        username: req.body.username
-    })
+    let user = new User(req.body)
 
     user.save().then(result => {
         res.status(201).json({ success: true })
