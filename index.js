@@ -25,9 +25,6 @@ if (process.env.CORS != null && process.env.CORS !== "") {
   let corsDomains = process.env.CORS.split(",")
   var corsOptions = {
     origin: function(origin, callback) {
-      console.log("CORS LIST", corsDomains)
-        console.log("ORIGIN", origin)
-        console.log("CORS INDEX", corsDomains.indexOf(origin))
       if (
         corsDomains.indexOf(origin) !== -1 ||
         origin == undefined ||
