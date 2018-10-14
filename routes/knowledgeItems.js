@@ -19,6 +19,10 @@ router.get('/', function(req, res) {
 router.post('/', authUtil.isAuthenticated, function(req, res) {
     let knowledgeItem = new KnowledgeItem(req.body)
 
+    knowledgeItem.modified=Date.now()
+    knowledgeItem.created=Date.now()
+    knowledgeItem.user = req.user._id
+
     if (!authUtil.isAdmin(req, res)) {
         knowledgeItem.approved=false
     }
@@ -42,11 +46,16 @@ router.get('/:id', function(req, res) {
 
 
 router.put('/:id', authUtil.isAuthenticated, function(req, res){
-    if (req.body.user != req.user || (req.body.approved == "true" && !authUtil.isAdmin(req, res))) {
-        res.status(401).json({message: "not authorized to approve"})
-        return
+    if (req.body.created) delete req.body.created
+    if (!authUtil.isAdmin(req, res)) {
+        if (req.body.user != req.user || req.body.approved == "true") {
+            res.status(401).json({message: "not authorized to approve"})
+            return
+        }
     }
-	KnowledgeItem.findOneAndUpdate({_id: req.params.id}, req.body).then(result => {
+
+    req.body.modified = Date.now()
+	KnowledgeItem.findOneAndUpdate({_id: req.params.id}, req.body, ).then(result => {
     	res.status(200).json({ success: true })
     })
 })
