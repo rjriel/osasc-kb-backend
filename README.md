@@ -11,10 +11,10 @@ Current methods of communication between parents, the board, and the OCASC are d
 
 ### Users
 Creates new login session
-POST - /login
+POST - /auth/login
 
 Logout of sessions
-POST - /logout
+POST - /auth/logout
 
 Get knowledge item
 GET - /knowledge
