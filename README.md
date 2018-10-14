@@ -20,7 +20,7 @@ Get knowledge item
 GET - /knowledge
 
 Returns all (un)approved knowledge items for user
-GET - /knowledge/:user_id
+GET - /knowledge/user
 
 Create new knowledge item
 POST - /knowledge
