@@ -53,6 +53,7 @@ app.use(
     saveUninitialized: true,
     secret: process.env.PASSPORT_SECRET,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { domain:'.ocasc.ca'},
     name: "ocasc-api-session",
     cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }
   })
