@@ -1,6 +1,7 @@
 require('dotenv').load();
 
 const bodyParser = require('body-parser')
+const cors = require("cors")
 
 const knowledgeItemRouter = require('./routes/knowledgeItems')
 const userRouter = require('./routes/users')
@@ -19,6 +20,25 @@ const expressSession = require('express-session')
 const MongoStore = require("connect-mongo")(expressSession)
 const app = express()
 const port = process.env.PORT || 3000
+
+if (process.env.CORS != null && process.env.CORS !== "") {
+  let corsDomains = process.env.CORS.split(",")
+  var corsOptions = {
+    origin: function(origin, callback) {
+      if (
+        corsDomains.indexOf(origin) !== -1 ||
+        (corsDomains.length === 1 && corsDomains[0] === "*")
+      ) {
+        callback(null, true)
+      } else {
+        callback(new Error("Not allowed by CORS"))
+      }
+    },
+    credentials: true,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+  app.use(cors(corsOptions))
+}
 
 require("./auth/passport.js")(passport)
 
