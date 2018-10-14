@@ -10,49 +10,38 @@ Current methods of communication between parents, the board, and the OCASC are d
 ## End points
 
 ### Users
-Creates new login session
-POST - /login
+- POST - /auth/login: Creates new login session
 
-Logout of sessions
-POST - /logout
+- POST - /auth/logout: Logout of sessions
 
-Get knowledge item
-GET - /knowledge
+- GET - /knowledge: Get knowledge item
 
-Create new knowledge item
-POST - /knowledge
+- GET - /knowledge/user: Returns all (un)approved knowledge items for user
 
-Get knowledge item based on id
-GET - /knowledge/:id
+- POST - /knowledge: Create new knowledge item
 
-Put new variable into knowledge item based on id
-PUT - /knowledge/:id
+- GET - /knowledge/:id :Get knowledge item based on id
 
-Delete knowledge item based on id
-DELETE - /knowledge/:id
+- PUT - /knowledge/:id :Put new variable into knowledge item based on id
+
+- DELETE - /knowledge/:id :Delete knowledge item based on id
 
 ### Admin
-Shows aspects of a user
-GET - /user
+- GET - /user: Shows aspects of a user
 
-Creates new user
-POST - /user
+- POST - /user: Creates new user
 
-Gets user based on id
-GET - /user/:id
+- GET - /user/:id :Gets user based on id
 
-Puts new variable into user based on id
-PUT - /user/:id
+- PUT - /user/:id :Puts new variable into user based on id
 
-Deletes user based on id
-DELETE - /user/:id
+- DELETE - /user/:id :Deletes user based on id
 
-Create a new picklist - see routes/picklist.js
-POST - /picklist/:id
+- GET - /knowledge/pending : Gets all pending users
 
-Delete an entire picklist based on its id - see routes/picklistItems.js
-DELETE - /picklistitem/:id
+- POST - /picklist/:id :Create a new picklist - see routes/picklist.js
+
+- DELETE - /picklistitem/:id :Delete an entire picklist based on its id - see routes/picklistItems.js
 
 ### Other
-Returns a picklist based on its id - see routes/picklist.js
-GET - /picklist/:id
+- GET - /picklist/:id :Returns a picklist based on its id - see routes/picklist.js
