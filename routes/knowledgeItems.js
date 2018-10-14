@@ -19,6 +19,10 @@ router.get('/', function(req, res) {
 router.post('/', authUtil.isAuthenticated, function(req, res) {
     let knowledgeItem = new KnowledgeItem(req.body)
 
+    if (!authUtil.isAdmin(req, res)) {
+        knowledgeItem.approved=false
+    }
+
     knowledgeItem.save().then(result => {
         res.status(201).json({ success: true })
     })
