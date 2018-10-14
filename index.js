@@ -10,7 +10,6 @@ const authRouter = require('./routes/auth')
 const picklistItemRouter = require('./routes/picklistItems')
 
 const mongoose = require('mongoose');
-mongoose.set("debug", true)
 mongoose.connect(process.env.CONNECTION_STRING);
 
 const passport = require('passport');
