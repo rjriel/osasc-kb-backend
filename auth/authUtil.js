@@ -11,7 +11,7 @@ module.exports = {
       if (next) next()
       return true
     } else {
-      res.status(403).end()
+      if (next) res.status(403).end()
       return false
     }
   }
