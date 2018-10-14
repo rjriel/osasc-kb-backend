@@ -9,6 +9,7 @@ var knowledgeItemSchema = new Schema({
   knowledgeItemType: {type: 'ObjectId', ref: 'picklistitem'},
   knowledgeItemCategory: {type: 'ObjectId', ref: 'pickistitem'},
   created: {type: 'Date', default: Date.now}
+  approved: {type: 'Boolean', default: false}
 });
 
 module.exports = mongoose.model('knowledgeitem', knowledgeItemSchema);
