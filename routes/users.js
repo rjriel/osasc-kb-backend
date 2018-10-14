@@ -7,7 +7,6 @@ const authUtil = require("../auth/authUtil")
 router.get('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
 
     User.find().then(items => {
-        // res.json(items) - returns all schema attributes 
         res.json(items.map(item => { return {id: item._id, username: item.username} }))
     })
 })
