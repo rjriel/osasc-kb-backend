@@ -8,18 +8,12 @@ const authUtil = require("../auth/authUtil")
 router.get('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
 
     User.find().then(items => {
-        // res.json(items) - returns all schema attributes 
         res.json(items.map(item => { return {id: item._id, username: item.username} }))
     })
 })
 
 router.post('/', authUtil.isAuthenticated, authUtil.isAdmin, function(req, res) {
-    let user = new User({
-        username: req.body.username,
-        organization: req.body.organization,
-        name: req.body.name,
-        role: req.body.role
-    })
+    let user = new User(req.body)
 
     bcrypt.hash(req.body.password, 5, function( err, bcryptedPassword) {
         user.password = bcryptedPassword

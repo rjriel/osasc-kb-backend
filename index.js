@@ -48,7 +48,3 @@ app.use('/picklist/', picklistRouter)
 app.use('/picklistitem/', picklistItemRouter)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-
-
-
-
